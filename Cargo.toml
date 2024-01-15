@@ -1,4 +1,4 @@
 [workspace]
-members = ["stack"]
+members = [ "linkedlist","stack"]
 
 resolver = "2"
