@@ -1,16 +1,20 @@
+use std::fmt::Debug;
+
 type Link<T> = Option<Box<Node<T>>>;
 
+#[derive(Debug)]
 struct Node<T> {
     elem: T,
     next: Link<T>,
 }
 
+#[derive(Debug)]
 struct List<T> {
     size: usize,
     head: Link<T>,
 }
 
-impl<T> List<T> {
+impl<T: Debug> List<T> {
     fn new() -> Self {
         Self {
             size: 0,
@@ -39,8 +43,33 @@ impl<T> List<T> {
         self.head = Some(node);
         self.size += 1;
     }
+
+    fn print_list(&self) {
+        let mut curr = (self.head).as_ref();
+        while curr.is_some() {
+            println!("{:?}", curr.unwrap().elem);
+            curr = (&curr.unwrap().next).as_ref();
+        }
+    }
+
+    fn front(&self) -> Option<&Box<Node<T>>> {
+        (self.head).as_ref()
+    }
+
+    fn back(&self) -> Option<&Box<Node<T>>> {
+        let mut curr = self.front();
+        while curr.is_some() {
+            let curr_node = curr.unwrap();
+            if curr_node.next.is_none() {
+                return Some(curr_node);
+            }
+            curr = curr_node.next.as_ref();
+        }
+        None
+    }
 }
 
 fn main() {
-    println!("Hello, world!");
+    let list = List::<i32>::new();
+    println!("{}", list.len());
 }

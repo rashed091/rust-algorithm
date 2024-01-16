@@ -1,8 +1,4 @@
 [workspace]
-<<<<<<< HEAD
-members = [ "linkedlist","stack"]
-=======
-members = ["stack"]
->>>>>>> fd40b7f (add vector based stack implementation)
+members = ["linkedlist", "stack"]
 
 resolver = "2"

@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-=======
-use core::str;
-use std::fmt::write;
-
->>>>>>> fd40b7f (add vector based stack implementation)
 #[derive(Debug)]
 struct Stack<T> {
     size: usize,
